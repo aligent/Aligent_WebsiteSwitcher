@@ -1,25 +1,19 @@
 Aligent WebsiteSwitcher Extension
 =====================
-Replaces the in-built Magento store switcher with a website switcher
+Replaces the in-built Magento store switcher with a website switcher.
+
 Facts
 -----
-- version: 0.1.0
-- extension key: Aligent_WebsiteSwitcher
-- [extension on Magento Connect](http://www.magentocommerce.com/magento-connect/aligent-websiteswitcher-1234.html)
-- Magento Connect 1.0 extension key: magento-community/Aligent_WebsiteSwitcher
-- Magento Connect 2.0 extension key: http://connect20.magentocommerce.com/community/Aligent_WebsiteSwitcher
+- version: 0.0.0
 - [extension on GitHub](https://github.com/aligent/Aligent_WebsiteSwitcher)
-- [direct download link](http://connect.magentocommerce.com/community/get/Aligent_WebsiteSwitcher-0.1.0.tgz)
 
 Description
 -----------
-This paragraph describes what the extension does.
+Replaces the in-built Magento store switcher with a website switcher.
 
 Requirements
 ------------
 - PHP >= 5.2.0
-- Mage_Core
-- ...
 
 Compatibility
 -------------
@@ -27,19 +21,12 @@ Compatibility
 
 Installation Instructions
 -------------------------
-1. Install the extension via Magento Connect with the key shown above or copy all the files into your document root.
-2. Clear the cache, logout from the admin panel and then login again.
-3. Configure and activate the extension under System - Configuration - Company - Example Extension.
-4. ...
+1. Install the module
+2. ** Important ** - To switch websites, the MAGE_RUN_TYPE *MUST* be set to 'store', and the MAGE_RUN_CODE *MUST NOT BE EMPTY* - This is due to the way that Magento works out which store to use when the `___store` get param is used.
 
 Uninstallation
 --------------
 1. Remove all extension files from your Magento installation
-2. ...
-
-Support
--------
-If you have any issues with this extension, open an issue on [GitHub](https://github.com/aligent/Aligent_WebsiteSwitcher/issues).
 
 Contribution
 ------------
@@ -47,8 +34,7 @@ Any contribution is highly appreciated. The best way to contribute code is to op
 
 Developer
 ---------
-Luke Mills[http://www.firstname-lastname.com](http://www.firstname-lastname.com)
-[@FirstNameLastName](https://twitter.com/FirstNameLastName)
+Luke Mills
 
 Licence
 -------
@@ -56,4 +42,4 @@ Licence
 
 Copyright
 ---------
-(c) 2012 Aligent
+(c) 2013 Aligent Consulting
