@@ -1,5 +1,4 @@
-<?xml version="1.0"?>
-<!--
+<?php
 /**
  * @category    Aligent
  * @package     Aligent_WebsiteSwitcher
@@ -8,13 +7,15 @@
  *
  * @author 		Luke Mills <luke@aligent.com.au>
  */
--->
-<config>
-    <modules>
-        <Aligent_WebsiteSwitcher>
-            <active>true</active>
-            <codePool>local</codePool>
-            <depends></depends>
-        </Aligent_WebsiteSwitcher>
-    </modules>
-</config>
+class Aligent_WebsiteSwitcher_Block_Switcher extends Mage_Core_Block_Template
+{
+    
+    public function getStores() {
+        return Mage::app()->getStores();
+    }
+    
+    public function getCurrentStoreId() {
+        return Mage::app()->getStore()->getId();
+    }
+    
+}

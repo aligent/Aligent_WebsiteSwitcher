@@ -1,2 +1,5 @@
 src/app/code/local/Aligent/WebsiteSwitcher     app/code/local/Aligent/WebsiteSwitcher
 src/app/etc/modules/*    app/etc/modules/
+src/app/design/frontend/base/default/layout/aligent/websiteswitcher.xml /app/design/frontend/base/default/layout/aligent/websiteswitcher.xml
+src/app/design/frontend/base/default/template/aligent/websiteswitcher app/design/frontend/base/default/template/aligent/websiteswitcher
+src/skin/frontend/base/default/aligent/css/websiteswitcher.css skin/frontend/base/default/aligent/css/websiteswitcher.css

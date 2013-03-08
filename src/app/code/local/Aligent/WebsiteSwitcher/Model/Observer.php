@@ -1,5 +1,4 @@
-<?xml version="1.0"?>
-<!--
+<?php
 /**
  * @category    Aligent
  * @package     Aligent_WebsiteSwitcher
@@ -8,13 +7,11 @@
  *
  * @author 		Luke Mills <luke@aligent.com.au>
  */
--->
-<config>
-    <modules>
-        <Aligent_WebsiteSwitcher>
-            <active>true</active>
-            <codePool>local</codePool>
-            <depends></depends>
-        </Aligent_WebsiteSwitcher>
-    </modules>
-</config>
+class Aligent_WebsiteSwitcher_Model_Observer
+{
+
+    public function setStoreCookie() {
+        Mage::app()->getCookie()->set(Mage_Core_Model_Store::COOKIE_NAME, Mage::app()->getStore()->getId(), true);
+    }
+    
+}

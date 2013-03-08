@@ -1,15 +1,50 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * @category    Aligent
+ * @package     Aligent_WebsiteSwitcher
+ * @copyright   Copyright (c) 2013 Aligent Consulting. (http://www.aligent.com.au)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ *
+ * @author 		Luke Mills <luke@aligent.com.au>
+ */
+-->
 <config>
     <modules>
         <Aligent_WebsiteSwitcher>
             <version>0.0.0</version>
         </Aligent_WebsiteSwitcher>
     </modules>
+    <frontend>
+        <layout>
+            <updates>
+                <aligent_websiteswitcher>
+                    <file>aligent/websiteswitcher.xml</file>
+                </aligent_websiteswitcher>
+            </updates>
+        </layout>
+    </frontend>
     <global>
+        <models>
+            <aligent_websiteswitcher>
+                <class>Aligent_WebsiteSwitcher_Model</class>
+            </aligent_websiteswitcher>
+        </models>
         <blocks>
             <aligent_websiteswitcher>
                 <class>Aligent_WebsiteSwitcher_Block</class>
             </aligent_websiteswitcher>
         </blocks>
+        <events>
+            <controller_front_init_before>
+                <observers>
+                    <aligent_websiteswitcher_setstorecookie>
+                        <type>singleton</type>
+                        <class>aligent_websiteswitcher/observer</class>
+                        <method>setStoreCookie</method>
+                    </aligent_websiteswitcher_setstorecookie>
+                </observers>
+            </controller_front_init_before>
+        </events>
     </global>
 </config>
