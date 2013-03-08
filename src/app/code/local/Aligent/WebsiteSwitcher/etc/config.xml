@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Aligent_WebsiteSwitcher>
+            <version>1.0.0</version>
+        </Aligent_WebsiteSwitcher>
+    </modules>
+    <global>
+        <blocks>
+            <aligent_websiteswitcher>
+                <class>Aligent_WebsiteSwitcher_Block</class>
+            </aligent_websiteswitcher>
+        </blocks>
+    </global>
+</config>
