@@ -21,4 +21,19 @@
             <block type="aligent_websiteswitcher/switcher" name="store_language" as="store_language" template="aligent/websiteswitcher/switcher.phtml" />
         </reference>
     </aligent_websiteswitcher_display_in_menu>
+
+    <aligent_websiteswitcher_display_modal>
+        <reference name="head">
+            <action method="addJs">
+                <script>prototype/window.js</script>
+            </action>
+            <action method="addItem">
+                <type>js_css</type>
+                <name>prototype/windows/themes/default.css</name>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="aligent_websiteswitcher/switcher" name="store_modal" as="store_modal" after="-" template="aligent/websiteswitcher/modal.phtml"/>
+        </reference>
+    </aligent_websiteswitcher_display_modal>
 </layout>

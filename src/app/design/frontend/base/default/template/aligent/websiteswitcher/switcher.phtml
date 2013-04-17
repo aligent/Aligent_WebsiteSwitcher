@@ -13,7 +13,6 @@
 <?php
 $_stores = $this->getStores();
 ?>
-<?php if (count($_stores) > 1) : ?>
 <div class="form-website">
     <label for="select-website"><?php echo $this->__('Select website:') ?></label>    
     <select id="select-website" title="<?php echo $this->__('Select website:') ?>" onchange="window.location.href=this.value">
@@ -23,4 +22,3 @@ $_stores = $this->getStores();
         <?php endforeach; ?>
     </select>
 </div>
-<?php endif; ?>

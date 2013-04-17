@@ -24,15 +24,19 @@ class Aligent_WebsiteSwitcher_Model_Observer
 
         /** @var $update Mage_Core_Model_Layout_Update */
         $update = Mage::app()->getLayout()->getUpdate();
-        
+
         $handlePrefix = 'aligent_websiteswitcher_';
 
-        if ($helper->canDisplayInMenu()) {
-            $update->addHandle($handlePrefix . 'display_in_menu');
-        }
-        
-        if ($helper->canDisplayModal()) {
-            $update->addHandle($handlePrefix . 'display_in_modal');
+        if (count(Mage::app()->getStores()) > 1) {
+
+            if ($helper->canDisplayInMenu()) {
+                $update->addHandle($handlePrefix . 'display_in_menu');
+            }
+
+            if ($helper->canDisplayModal()) {
+                $update->addHandle($handlePrefix . 'display_modal');
+            }
+
         }
         
     }

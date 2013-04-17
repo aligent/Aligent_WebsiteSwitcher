@@ -9,13 +9,33 @@
  */
 class Aligent_WebsiteSwitcher_Block_Switcher extends Mage_Core_Block_Template
 {
-    
+
+    /**
+     * @return array
+     */
     public function getStores() {
         return Mage::app()->getStores();
     }
-    
+
+    /**
+     * @return Mage_Core_Model_Store
+     */
+    public function getCurrentStore() {
+        return Mage::app()->getStore();
+    }
+
+    /**
+     * @return int
+     */
     public function getCurrentStoreId() {
-        return Mage::app()->getStore()->getId();
+        return $this->getCurrentStore()->getId();
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getCurrentStoreName() {
+        return $this->getCurrentStore()->getName();
     }
     
 }
