@@ -10,7 +10,7 @@
  */
 -->
 <layout>
-    <default>
+    <aligent_websiteswitcher_display_in_menu>
         <reference name="head">
             <action method="addItem">
                 <type>skin_css</type>
@@ -20,5 +20,5 @@
         <reference name="header">
             <block type="aligent_websiteswitcher/switcher" name="store_language" as="store_language" template="aligent/websiteswitcher/switcher.phtml" />
         </reference>
-    </default>
+    </aligent_websiteswitcher_display_in_menu>
 </layout>

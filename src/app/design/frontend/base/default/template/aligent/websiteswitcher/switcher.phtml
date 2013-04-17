@@ -13,7 +13,7 @@
 <?php
 $_stores = $this->getStores();
 ?>
-<?php if (Mage::helper('aligent_websiteswitcher')->canDisplayInMenu() && count($_stores) > 1) : ?>
+<?php if (count($_stores) > 1) : ?>
 <div class="form-website">
     <label for="select-website"><?php echo $this->__('Select website:') ?></label>    
     <select id="select-website" title="<?php echo $this->__('Select website:') ?>" onchange="window.location.href=this.value">
