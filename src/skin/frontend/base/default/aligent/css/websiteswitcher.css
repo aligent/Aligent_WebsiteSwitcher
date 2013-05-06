@@ -6,7 +6,11 @@
  *
  * @author 		Luke Mills <luke@aligent.com.au>
  */
-.header .form-website { clear:both; padding:5px 0 0; text-align:right; }
+.header .form-website { clear:both; padding:5px 0 0; text-align:right;  }
 .header .form-website label { font-weight:bold; padding-right:5px; color:#a7c6dd; vertical-align:middle; }
 .header .form-website select { padding:0; }
 .header .form-website select.flags option { background-position:4px 50%; background-repeat:no-repeat; padding-left:25px; }
+#aligent-switcher{
+    width:400px;
+    padding: 10px;;
+}

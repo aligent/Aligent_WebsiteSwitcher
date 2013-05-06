@@ -10,26 +10,29 @@
 
 /** @var $this Aligent_WebsiteSwitcher_Block_Switcher */
 ?>
-<div id="aligent_storeswitcher">
+<div id="aligent-switcher" class="white-box white-lightbox">
     <h1><?php echo $this->__('Welcome'); ?></h1>
 
-    <p><?php echo $this->__("You are visiting %s", $this->getCurrentStoreName()); ?></p>
+    <p><?php echo $this->__("You are visiting <strong>%s</strong>", $this->getCurrentStoreName()); ?></p>
+    <br/>
 
     <p><?php echo $this->__("If this is incorrect, please select you're location:"); ?></p>
+    <br/>
+
     <?php echo $this->getLayout()->createBlock('aligent_websiteswitcher/switcher')->setTemplate('aligent/websiteswitcher/switcher.phtml')->toHtml(); ?>
-    <p><?php echo $this->__('otherwise'); ?></p>
-
-    <p><a href="<?php echo $this->getCurrentStore()->getCurrentUrl()?>"><?php echo $this->__('Continue...'); ?></a></p>
+    <br/>
+    <p><?php echo $this->__('Do you still want to continue?'); ?>
+    <a href="<?php echo $this->getCurrentStore()->getCurrentUrl()?>"><?php echo $this->__('Click Here'); ?></a></p>
 </div>
-
 <script type="text/javascript">
     //<![CDATA[
-    
-    (function () {
-        var modal = new Window({width: 200, height: 150, recenterAuto: true});
-        modal.setContent('aligent_storeswitcher');
-        modal.show();
-    })(); 
-    
+    document.observe('dom:loaded', function() {
+        if($('aligent-switcher')){
+            $jQ('#aligent-switcher').lightbox_me({
+                centered: true
+            });
+        }
+        Event.stop(event);
+    });
     //]]>
 </script>

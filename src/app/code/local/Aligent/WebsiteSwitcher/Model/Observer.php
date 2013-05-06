@@ -13,12 +13,12 @@ class Aligent_WebsiteSwitcher_Model_Observer
     public function setStoreCookie() {
         Mage::app()->getCookie()->set(Mage_Core_Model_Store::COOKIE_NAME, Mage::app()->getStore()->getId(), true);
     }
-    
+
     /**
-     * Sets appropriate layout handles for the layout system to work with 
+     * Sets appropriate layout handles for the layout system to work with
      */
     public function setLayoutHandles() {
-        
+
         /** @var $helper Aligent_WebsiteSwitcher_Helper_Data */
         $helper = Mage::helper('aligent_websiteswitcher');
 
@@ -31,14 +31,24 @@ class Aligent_WebsiteSwitcher_Model_Observer
 
             if ($helper->canDisplayInMenu()) {
                 $update->addHandle($handlePrefix . 'display_in_menu');
+
             }
 
             if ($helper->canDisplayModal()) {
-                $update->addHandle($handlePrefix . 'display_modal');
+                $modalDisplayed='';
+                $modalDisplayed= Mage::getSingleton('core/session')->getModalDisplayed();
+                if($modalDisplayed){
+                    return;
+                }
+                else{
+                    $modalDisplayed=true;
+                    Mage::getSingleton('core/session')->setModalDisplayed($modalDisplayed);
+                    $update->addHandle($handlePrefix . 'display_modal');
+                }
             }
 
         }
-        
+
     }
-    
+
 }
