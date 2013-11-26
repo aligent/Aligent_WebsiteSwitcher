@@ -1,6 +1,6 @@
 Aligent WebsiteSwitcher Extension
 =====================
-Replaces the in-built Magento store switcher with a website switcher.
+Replaces the in-built Magento store switcher with modal store switcher.
 
 Facts
 -----
