@@ -19,7 +19,23 @@ class Aligent_WebsiteSwitcher_Model_Observer
      * to the current store.
      */
     public function setStoreCookie() {
-        Mage::app()->getCookie()->set(Mage_Core_Model_Store::COOKIE_NAME, Mage::app()->getStore()->getId(), true);
+        $iCurrentStoreId = Mage::app()->getCookie()->get(Mage_Core_Model_Store::COOKIE_NAME);
+        if ($iCurrentStoreId === false) {
+            if (Mage::helper('aligent_websiteswitcher')->canUseGeoIP()) {
+                $iGeoStore = Mage::helper('aligent_websiteswitcher')->geoLocateToStoreId();
+
+                if ($iGeoStore !== Mage::app()->getStore()->getId()) {
+                    Mage::app()->getCookie()->set(Mage_Core_Model_Store::COOKIE_NAME, $iGeoStore, true);
+
+                    $oStore = Mage::getModel('core/store')->load($iGeoStore);
+
+                    Mage::app()->init($oStore->getCode(), 'store');
+
+                }
+            }
+        } else {
+            Mage::app()->getCookie()->set(Mage_Core_Model_Store::COOKIE_NAME, Mage::app()->getStore()->getId(), true);
+        }
     }
 
 
