@@ -6,6 +6,8 @@
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  *
  * @author         Luke Mills <luke@aligent.com.au>
+ * @author      Swapna Palaniswamy <swapna@aligent.com.au>
+ * @author      Jim O'Halloran <jim@aligent.com.au>
  */
 
 /** @var $this Aligent_WebsiteSwitcher_Block_Switcher */
@@ -16,23 +18,35 @@
     <p><?php echo $this->__("You are visiting <strong>%s</strong>", $this->getCurrentStoreName()); ?></p>
     <br/>
 
-    <p><?php echo $this->__("If this is incorrect, please select you're location:"); ?></p>
+    <p><?php echo $this->__("If this is incorrect, please select your location:"); ?></p>
     <br/>
 
-    <?php echo $this->getLayout()->createBlock('aligent_websiteswitcher/switcher')->setTemplate('aligent/websiteswitcher/switcher.phtml')->toHtml(); ?>
+    <?php echo $this->getChildHtml('modal_switcher'); ?>
     <br/>
     <p><?php echo $this->__('Do you still want to continue?'); ?>
     <a href="<?php echo $this->getCurrentStore()->getCurrentUrl()?>"><?php echo $this->__('Click Here'); ?></a></p>
 </div>
 <script type="text/javascript">
     //<![CDATA[
+    var contentWin = null;
     document.observe('dom:loaded', function() {
         if($('aligent-switcher')){
-            $jQ('#aligent-switcher').lightbox_me({
-                centered: true
+            contentWin = null;
+            contentWin = new Window({
+                className: 'aligent',
+                recenterAuto: false,
+                maximizable: false,
+                minimizable: false,
+                resizable: false,
+                hideEffect: Element.hide,
+                showEffect: Element.show,
+                minWidth: 240,
+                destroyOnClose: false
             });
+            contentWin.setContent('aligent-switcher', true, false);
+            contentWin.setZIndex(20);
+            contentWin.showCenter(true);
         }
-        Event.stop(event);
     });
     //]]>
 </script>

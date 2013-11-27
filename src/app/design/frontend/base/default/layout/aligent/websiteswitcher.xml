@@ -16,6 +16,10 @@
                 <type>skin_css</type>
                 <name>aligent/css/websiteswitcher.css</name>
             </action>
+            <action method="addItem">
+                <type>js</type>
+                <name>prototype/window.js</name>
+            </action>
         </reference>
     </default>
     <aligent_websiteswitcher_display_in_menu>
@@ -26,7 +30,9 @@
 
     <aligent_websiteswitcher_display_modal>
         <reference name="content">
-            <block type="aligent_websiteswitcher/switcher" name="store_modal" as="store_modal" after="-" template="aligent/websiteswitcher/modal.phtml"/>
+            <block type="aligent_websiteswitcher/switcher" name="store_modal" as="store_modal" after="-" template="aligent/websiteswitcher/modal.phtml">
+                <block type="aligent_websiteswitcher/switcher" name="modal_switcher" template="aligent/websiteswitcher/switcher.phtml" />
+            </block>
         </reference>
     </aligent_websiteswitcher_display_modal>
 </layout>
