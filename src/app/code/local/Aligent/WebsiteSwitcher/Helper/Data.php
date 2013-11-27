@@ -86,4 +86,8 @@ class Aligent_WebsiteSwitcher_Helper_Data extends Mage_Core_Helper_Abstract
     public function getCountryParam() {
         return Mage::getStoreConfig('aligent_website_switcher/website_switcher/geoip_based_on');
     }
+
+    public function getLimitToCurrentWebsite() {
+        return Mage::getStoreConfigFlag('aligent_website_switcher/website_switcher/limit_to_website');
+    }
 }

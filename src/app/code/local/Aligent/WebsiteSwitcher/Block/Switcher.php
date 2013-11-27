@@ -14,7 +14,16 @@ class Aligent_WebsiteSwitcher_Block_Switcher extends Mage_Core_Block_Template
      * @return array
      */
     public function getStores() {
-        return Mage::app()->getStores();
+        $aStores = Mage::app()->getStores();
+        if (Mage::helper('aligent_websiteswitcher')->getLimitToCurrentWebsite()) {
+            $iWebsiteId = $this->getCurrentStore()->getWebsiteId();
+            foreach ($aStores as $iIdx => $oStore) {
+                if ($oStore->getWebsiteId() != $iWebsiteId) {
+                    unset($aStores[$iIdx]);
+                }
+            }
+        }
+        return $aStores;
     }
 
     /**

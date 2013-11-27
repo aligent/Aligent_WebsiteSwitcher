@@ -88,8 +88,8 @@
             <website_switcher>
                 <display_in_menu>0</display_in_menu>
                 <display_modal>1</display_modal>
-                <display_modal>0</display_modal>
-
+                <limit_to_website>0</limit_to_website>
+                <use_geoip>0</use_geoip>
             </website_switcher>
         </aligent_website_switcher>
     </default>
