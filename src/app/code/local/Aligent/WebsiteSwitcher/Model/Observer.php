@@ -25,16 +25,17 @@ class Aligent_WebsiteSwitcher_Model_Observer
                 $iGeoStore = Mage::helper('aligent_websiteswitcher')->geoLocateToStoreId();
 
                 if ($iGeoStore !== Mage::app()->getStore()->getId()) {
-                    Mage::app()->getCookie()->set(Mage_Core_Model_Store::COOKIE_NAME, $iGeoStore, true);
-
                     $oStore = Mage::getModel('core/store')->load($iGeoStore);
+
+                    Mage::app()->getCookie()->set(Mage_Core_Model_Store::COOKIE_NAME, $oStore->getCode(), true);
 
                     Mage::app()->init($oStore->getCode(), 'store');
 
                 }
             }
         } else {
-            Mage::app()->getCookie()->set(Mage_Core_Model_Store::COOKIE_NAME, Mage::app()->getStore()->getId(), true);
+            Mage::log("Store Id: ".Mage::app()->getStore()->getId()." Cookie Store: ".$iCurrentStoreId);
+            Mage::app()->getCookie()->set(Mage_Core_Model_Store::COOKIE_NAME, Mage::app()->getStore()->getCode(), true);
         }
     }
 
