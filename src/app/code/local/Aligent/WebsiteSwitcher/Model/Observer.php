@@ -59,10 +59,7 @@ class Aligent_WebsiteSwitcher_Model_Observer
             }
 
             if ($oHelper->canDisplayModal()) {
-                if (!Mage::getSingleton('core/session')->getModalDisplayed()) {
-                    Mage::getSingleton('core/session')->setModalDisplayed(true);
-                    $oUpdate->addHandle(self::HANDLE_PREFIX . 'display_modal');
-                }
+                $oUpdate->addHandle(self::HANDLE_PREFIX . 'display_modal');
             }
         }
 

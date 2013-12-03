@@ -12,7 +12,7 @@
 
 /** @var $this Aligent_WebsiteSwitcher_Block_Switcher */
 ?>
-<div id="aligent-switcher" class="white-box white-lightbox">
+<div id="aligent-switcher" class="white-box white-lightbox" style="display: none;">
     <h1><?php echo $this->__('Welcome'); ?></h1>
 
     <p><?php echo $this->__("You are visiting <strong>%s</strong>", $this->getCurrentStoreName()); ?></p>
@@ -30,7 +30,20 @@
     //<![CDATA[
     var contentWin = null;
     document.observe('dom:loaded', function() {
-        if($('aligent-switcher')){
+        var vClientCookieName = 'store_selected';
+        // Parse client side cookie to see if we've popped the modal before.
+        var aClientResults = document.cookie.match ( '(^|;) ?' + vClientCookieName + '=([^;]*)(;|$)' );
+        if (!aClientResults && $('aligent-switcher')) {
+
+            // Set the client side cookie to indicate that the modal has been displayed.
+            var setValue = vClientCookieName + '=1';
+            var expiryDate = new Date();
+            expiryDate.setTime(expiryDate.getTime()+(1*24*60*60*1000)); // 24 hours
+            var setExpiration = "; expires="+expiryDate.toGMTString();
+            var setCookiePath = "; path=/";  // Make this cookie the same on all pages for this site
+            document.cookie = setValue+setExpiration+setCookiePath;
+
+            // Now pop the modal
             contentWin = null;
             contentWin = new Window({
                 className: 'aligent',
