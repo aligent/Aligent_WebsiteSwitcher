@@ -14,11 +14,12 @@
 $_stores = $this->getStores();
 ?>
 <div class="form-website">
-    <label for="select-website"><?php echo $this->__('Select website:') ?></label>    
-    <select id="select-website" title="<?php echo $this->__('Select website:') ?>" onchange="window.location.href=this.value">
+    <label for="select-website"><?php echo $this->__('Select website:') ?></label>
+    <select id="select-website" title="<?php echo $this->__('Select website:') ?>">
         <?php foreach ($_stores as $_store) : ?>
             <?php $_selected = ($_store->getId() == $this->getCurrentStoreId()) ? ' selected="selected"' : '' ?>
             <option value="<?php echo $_store->getCurrentUrl() ?>"<?php echo $_selected ?>><?php echo $this->escapeHtml($_store->getName()) ?></option>
         <?php endforeach; ?>
     </select>
+    <a href="javascript:void(0)" onclick="window.location.href=document.getElementById('select-website').value;"><?php echo $this->__('Change'); ?></a>
 </div>
