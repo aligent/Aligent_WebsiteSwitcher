@@ -67,7 +67,7 @@ class Aligent_WebsiteSwitcher_Helper_Data extends Mage_Core_Helper_Abstract
                     ->addFieldToFilter('scope_id', array('in' => $aStoreIds))
                     ->getFirstItem();
 
-                if ($oConfigItem) {
+                if (!$oConfigItem->isObjectNew()) {
                     return $oConfigItem->getScopeId();
                 }
             }
