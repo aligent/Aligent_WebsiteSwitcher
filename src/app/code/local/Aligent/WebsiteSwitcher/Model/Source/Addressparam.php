@@ -15,6 +15,7 @@ class Aligent_WebsiteSwitcher_Model_Source_Addressparam {
         return array(
             array('value' => 'general/country/allow',          'label'=>Mage::helper('aligent_websiteswitcher')->__('Billing Address')),
             array('value' => 'general/country/allow_shipping', 'label'=>Mage::helper('aligent_websiteswitcher')->__('Shipping Address')),
+            array('value' => 'aligent_website_switcher/website_switcher/geolocate_to_store', 'label'=>Mage::helper('aligent_websiteswitcher')->__('Custom')),
         );
     }
 
@@ -26,8 +27,9 @@ class Aligent_WebsiteSwitcher_Model_Source_Addressparam {
     public function toArray() {
 
         return array(
-            'general/country/allow'          => Mage::helper('adminhtml')->__('Billing Address'),
-            'general/country/allow_shipping' => Mage::helper('adminhtml')->__('Shipping Address'),
+            'general/country/allow'                                 => Mage::helper('adminhtml')->__('Billing Address'),
+            'general/country/allow_shipping'                        => Mage::helper('adminhtml')->__('Shipping Address'),
+            'aligent_website_switcher/website_switcher/geolocate_to_store'  => Mage::helper('adminhtml')->__('Custom'),
         );
     }
 
