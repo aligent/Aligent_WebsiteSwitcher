@@ -40,7 +40,7 @@
                 // Set the client side cookie to indicate that the modal has been displayed.
                 var setValue = vClientCookieName + '=1';
                 var expiryDate = new Date();
-                expiryDate.setTime(expiryDate.getTime()+(1*24*60*60*1000)); // 24 hours
+                expiryDate.setTime(expiryDate.getTime()+(365*24*60*60*1000)); // 365 days
                 var setExpiration = "; expires="+expiryDate.toGMTString();
                 var setCookiePath = "; path=/";  // Make this cookie the same on all pages for this site
                 document.cookie = setValue+setExpiration+setCookiePath;
