@@ -56,24 +56,27 @@ class Aligent_WebsiteSwitcher_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function geoLocateToStoreId() {
         if ($this->canUseGeoIP()) {
-            $vCountryCode = Mage::helper('aligent_geoip')->autodetectCountry();
+            $vCountryCode = strtoupper(Mage::helper('aligent_geoip')->autodetectCountry());
             if ($vCountryCode !== false) {
 
                 $iCurrentWebSiteId = Mage::app()->getStore()->getWebsiteId();
-                $aStoreIds = Mage::getModel('core/store')->getCollection()
-                    ->addFieldToFilter('website_id', array('eq' => $iCurrentWebSiteId))
-                    ->getAllIds();
+                $storeIdsCollection = Mage::getModel('core/store')->getCollection();
 
-                $oConfigItem = Mage::getModel('core/config_data')->getCollection()
-                    ->addFieldToFilter('scope', array('eq' => 'stores'))
-                    ->addFieldToFilter('path', array('eq' => $this->getCountryParam()))
-                    ->addFieldToFilter('value', array('finset' => $vCountryCode))
-                    ->addFieldToFilter('scope_id', array('in' => $aStoreIds))
-                    ->getFirstItem();
-
-                if (!$oConfigItem->isObjectNew()) {
-                    return $oConfigItem->getScopeId();
+                if ($this->getLimitToCurrentWebsite()) {
+                    $storeIdsCollection->addFieldToFilter('website_id', array('eq' => $iCurrentWebSiteId));
+                } else {
+                    $storeIdsCollection->addFieldToFilter('code', array('neq' => 'admin'));
                 }
+
+                $aStoreIds = $storeIdsCollection->getAllIds();
+
+                foreach ($aStoreIds as $storeId) {
+                    $countries = explode(',', Mage::getStoreConfig($this->getCountryParam(), $storeId));
+                    if (in_array($vCountryCode, $countries)) {
+                        return $storeId;
+                    }
+                }
+
             }
         }
 
