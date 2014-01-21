@@ -33,7 +33,11 @@ class Aligent_WebsiteSwitcher_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function canUseGeoIP() {
         if (Mage::getStoreConfigFlag('aligent_website_switcher/website_switcher/use_geoip')) {
-            $oHelper = Mage::helper('aligent_geoip');
+            try {
+                $oHelper = Mage::helper('aligent_geoip');
+            } catch (Exception $e) {
+                $oHelper = null;
+            }
             if (!$oHelper) {
                 Mage::log("Can't use Geolocation.  Aligent/GeoIP not installed or disabled.");
             } else {
