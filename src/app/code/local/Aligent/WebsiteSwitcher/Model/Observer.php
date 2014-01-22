@@ -15,6 +15,46 @@ class Aligent_WebsiteSwitcher_Model_Observer
     const HANDLE_PREFIX = 'aligent_websiteswitcher_';
 
     /**
+     * Observe the controller_front_init_before event and checks whether the ___store get param is set.
+     * This is necessary because Mage_Core_Model_App::_checkGetStore() (/app/code/core/Mage/Core/Model/App.php:552)
+     * deletes the store cookie if the get param is used and is set to the default store for a website (not necessarily the default website).
+     * This has the effect of defaulting to the default store of the default website on the next page load, which is not intended.
+     */
+    public function checkGetStore() {
+
+        // Adapted from Mage_Core_Model_App::_checkGetStore().
+
+        $stores = Mage::app()->getStores();
+
+        if (empty($_GET)) {
+            return $this;
+        }
+
+        /**
+         * @todo check XML_PATH_STORE_IN_URL
+         */
+        if (!isset($_GET['___store'])) {
+            return $this;
+        }
+
+        $store = $_GET['___store'];
+        if (!isset($stores[$store])) {
+            return $this;
+        }
+
+        $storeObj = $stores[$store];
+        if (!$storeObj->getId() || !$storeObj->getIsActive()) {
+            return $this;
+        }
+
+        if (Mage::app()->getStore()->getCode() == $store) {
+            Mage::app()->getCookie()->set(Mage_Core_Model_Store::COOKIE_NAME, $this->_currentStore, true);
+        }
+        return $this;
+
+    }
+
+    /**
      * Observe the controller_front_init_before event and set the store cookie
      * to the current store.
      */
