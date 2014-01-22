@@ -56,8 +56,9 @@ class Aligent_WebsiteSwitcher_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function geoLocateToStoreId() {
         if ($this->canUseGeoIP()) {
-            $vCountryCode = strtoupper(Mage::helper('aligent_geoip')->autodetectCountry());
+            $vCountryCode = Mage::helper('aligent_geoip')->autodetectCountry();
             if ($vCountryCode !== false) {
+                $vCountryCode = strtoupper($vCountryCode);
 
                 $iCurrentWebSiteId = Mage::app()->getStore()->getWebsiteId();
                 $storeIdsCollection = Mage::getModel('core/store')->getCollection();
