@@ -25,6 +25,10 @@ class Aligent_WebsiteSwitcher_Model_Observer
         // Adapted from Mage_Core_Model_App::_checkGetStore().
 
         $stores = Mage::app()->getStores();
+        $indexedStores = array();
+        foreach ($stores as $_store) {
+            $indexedStores[$_store->getCode()] = $_store;
+        }
 
         if (empty($_GET)) {
             return $this;
@@ -38,17 +42,17 @@ class Aligent_WebsiteSwitcher_Model_Observer
         }
 
         $store = $_GET['___store'];
-        if (!isset($stores[$store])) {
+        if (!isset($indexedStores[$store])) {
             return $this;
         }
 
-        $storeObj = $stores[$store];
+        $storeObj = $indexedStores[$store];
         if (!$storeObj->getId() || !$storeObj->getIsActive()) {
             return $this;
         }
 
         if (Mage::app()->getStore()->getCode() == $store) {
-            Mage::app()->getCookie()->set(Mage_Core_Model_Store::COOKIE_NAME, $this->_currentStore, true);
+            Mage::app()->getCookie()->set(Mage_Core_Model_Store::COOKIE_NAME, $store, true);
         }
         return $this;
 

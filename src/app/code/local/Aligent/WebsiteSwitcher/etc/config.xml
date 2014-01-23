@@ -46,7 +46,7 @@
                     <aligent_websiteswitcher_checkGetStore>
                         <type>singleton</type>
                         <class>aligent_websiteswitcher/observer</class>
-                        <method>setStoreCookie</method>
+                        <method>checkGetStore</method>
                     </aligent_websiteswitcher_checkGetStore>
                     <aligent_websiteswitcher_setstorecookie>
                         <type>singleton</type>
