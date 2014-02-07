@@ -1,17 +1,33 @@
 <?php
 /**
- * @category      Aligent
- * @package       Aligent_WebsiteSwitcher
- * @copyright     Copyright (c) 2013 Aligent Consulting. (http://www.aligent.com.au)
- * @license       http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * app/code/local/Aligent/WebsiteSwitcher/Helper/Data.php
  *
- * @author        Luke Mills <luke@aligent.com.au>
- * @author        Jim O'Halloran <jim@aligent.com.au>
+ * @category  Aligent
+ * @package   Aligent_WebsiteSwitcher
+ * @author    Luke Mills <luke@aligent.com.au>
+ * @author    Jim O'Halloran <jim@aligent.com.au>
+ * @copyright 2013-2014 Aligent Consulting.
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @link      http://www.aligent.com.au/
+ */
+
+/**
+ * Aligent_WebsiteSwitcher_Helper_Data
+ *
+ * @category  Aligent
+ * @package   Aligent_WebsiteSwitcher
+ * @author    Luke Mills <luke@aligent.com.au>
+ * @author    Jim O'Halloran <jim@aligent.com.au>
+ * @copyright 2013-2014 Aligent Consulting.
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @link      http://www.aligent.com.au/
  */
 class Aligent_WebsiteSwitcher_Helper_Data extends Mage_Core_Helper_Abstract
 {
 
     /**
+     * Returns whether or not the website switcher can be displayed in the menu, based on store config.
+     *
      * @return bool
      */
     public function canDisplayInMenu()
@@ -19,12 +35,19 @@ class Aligent_WebsiteSwitcher_Helper_Data extends Mage_Core_Helper_Abstract
         return Mage::getStoreConfigFlag('aligent_website_switcher/website_switcher/display_in_menu');
     }
 
+    /**
+     * Returns whether or not the website switcher can be displayed in a modal, based on store config.
+     *
+     * @return bool
+     */
     public function canDisplayModal()
     {
         return Mage::getStoreConfigFlag('aligent_website_switcher/website_switcher/display_modal');
     }
 
     /**
+     * Whether or not the Aligent_GeoIP module is available, and set to be used in the store config.
+     *
      * Returns true if the use_geoip parameter is turned on, AND the Aligent_GeoIP
      * extension is installed.  For backwards compatibility, we don't want to make
      * Aligent_GeoIP a dependency of this extension, but we do want to ensure GeoIP
@@ -51,8 +74,7 @@ class Aligent_WebsiteSwitcher_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /**
-     * Use IP Geolocation to find the first store that can supply items to the
-     * user's country.
+     * Use IP Geolocation to find the first store that can supply items to the user's country.
      *
      * @return int
      */
@@ -87,8 +109,7 @@ class Aligent_WebsiteSwitcher_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /**
-     * Return the name of the parameter we'll use to geoguess the most
-     * appropriate store for the customer.
+     * Parameter to use to geo-guess the most appropriate store for the customer.
      *
      * @return string
      */
@@ -97,6 +118,11 @@ class Aligent_WebsiteSwitcher_Helper_Data extends Mage_Core_Helper_Abstract
         return Mage::getStoreConfig('aligent_website_switcher/website_switcher/geoip_based_on');
     }
 
+    /**
+     * Whether or not to limit website switcher selection to stores within the current website.
+     *
+     * @return bool
+     */
     public function getLimitToCurrentWebsite()
     {
         return Mage::getStoreConfigFlag('aligent_website_switcher/website_switcher/limit_to_website');

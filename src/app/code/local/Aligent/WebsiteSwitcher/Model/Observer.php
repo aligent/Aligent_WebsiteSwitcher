@@ -1,13 +1,28 @@
 <?php
 /**
- * @category      Aligent
- * @package       Aligent_WebsiteSwitcher
- * @copyright     Copyright (c) 2013 Aligent Consulting. (http://www.aligent.com.au)
- * @license       http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * app/code/local/Aligent/WebsiteSwitcher/Model/Observer.php
  *
- * @author        Luke Mills <luke@aligent.com.au>
- * @author        Swapna Palaniswamy <swapna@aligent.com.au>
- * @author        Jim O'Halloran <jim@aligent.com.au>
+ * @category  Aligent
+ * @package   Aligent_WebsiteSwitcher
+ * @author    Luke Mills <luke@aligent.com.au>
+ * @author    Swapna Palaniswamy <swapna@aligent.com.au>
+ * @author    Jim O'Halloran <jim@aligent.com.au>
+ * @copyright 2013-2014 Aligent Consulting.
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @link      http://www.aligent.com.au/
+ */
+
+/**
+ * Aligent_WebsiteSwitcher_Model_Observer
+ *
+ * @category  Aligent
+ * @package   Aligent_WebsiteSwitcher
+ * @author    Luke Mills <luke@aligent.com.au>
+ * @author    Swapna Palaniswamy <swapna@aligent.com.au>
+ * @author    Jim O'Halloran <jim@aligent.com.au>
+ * @copyright 2013-2014 Aligent Consulting.
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @link      http://www.aligent.com.au/
  */
 class Aligent_WebsiteSwitcher_Model_Observer
 {
@@ -16,10 +31,13 @@ class Aligent_WebsiteSwitcher_Model_Observer
 
     /**
      * Observe the controller_front_init_before event and checks whether the ___store get param is set.
+     *
      * This is necessary because Mage_Core_Model_App::_checkGetStore() (/app/code/core/Mage/Core/Model/App.php:552)
      * deletes the store cookie if the get param is used and is set to the default store for a website (not necessarily
      * the default website). This has the effect of defaulting to the default store of the default website on the next
      * page load, which is not intended.
+     *
+     * @return Aligent_WebsiteSwitcher_Model_Observer
      */
     public function checkGetStore()
     {
@@ -36,9 +54,7 @@ class Aligent_WebsiteSwitcher_Model_Observer
             return $this;
         }
 
-        /**
-         * @todo check XML_PATH_STORE_IN_URL
-         */
+        // @TODO Check XML_PATH_STORE_IN_URL.
         if (!isset($_GET['___store'])) {
             return $this;
         }
@@ -61,8 +77,9 @@ class Aligent_WebsiteSwitcher_Model_Observer
     }
 
     /**
-     * Observe the controller_front_init_before event and set the store cookie
-     * to the current store.
+     * Observe the controller_front_init_before event and set the store cookie to the current store.
+     *
+     * @return void
      */
     public function setStoreCookie()
     {
@@ -86,8 +103,9 @@ class Aligent_WebsiteSwitcher_Model_Observer
     }
 
     /**
-     * Observes the controller_action_layout_load_before event amd sets
-     * appropriate layout handles for the layout system to work with.
+     * Observes the controller_action_layout_load_before event amd sets appropriate layout handles for the layout system to work with.
+     *
+     * @return void
      */
     public function setLayoutHandles()
     {

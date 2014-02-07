@@ -1,8 +1,26 @@
 <?php
+/**
+ * app/code/local/Aligent/WebsiteSwitcher/Model/Source/Addressparam.php
+ *
+ * @category  Aligent
+ * @package   Aligent_WebsiteSwitcher
+ * @author    Luke Mills <luke@aligent.com.au>
+ * @author    Jim O'Halloran <jim@aligent.com.au>
+ * @copyright 2013-2014 Aligent Consulting.
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @link      http://www.aligent.com.au/
+ */
 
 /**
- * Source model used in the selection of Billing/Shipping address for IP to store
- * Geolocation.
+ * Source model used in the selection of Billing/Shipping address for IP to store Geolocation.
+ *
+ * @category  Aligent
+ * @package   Aligent_WebsiteSwitcher
+ * @author    Luke Mills <luke@aligent.com.au>
+ * @author    Jim O'Halloran <jim@aligent.com.au>
+ * @copyright 2013-2014 Aligent Consulting.
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @link      http://www.aligent.com.au/
  */
 class Aligent_WebsiteSwitcher_Model_Source_Addressparam
 {
