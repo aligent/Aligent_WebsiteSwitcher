@@ -1,11 +1,11 @@
 <?php
 /**
- * @category    Aligent
- * @package     Aligent_WebsiteSwitcher
- * @copyright   Copyright (c) 2013 Aligent Consulting. (http://www.aligent.com.au)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @category      Aligent
+ * @package       Aligent_WebsiteSwitcher
+ * @copyright     Copyright (c) 2013 Aligent Consulting. (http://www.aligent.com.au)
+ * @license       http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  *
- * @author 		Luke Mills <luke@aligent.com.au>
+ * @author        Luke Mills <luke@aligent.com.au>
  */
 class Aligent_WebsiteSwitcher_Block_Switcher extends Mage_Core_Block_Template
 {
@@ -13,7 +13,8 @@ class Aligent_WebsiteSwitcher_Block_Switcher extends Mage_Core_Block_Template
     /**
      * @return array
      */
-    public function getStores() {
+    public function getStores()
+    {
         $aStores = Mage::app()->getStores();
         if (Mage::helper('aligent_websiteswitcher')->getLimitToCurrentWebsite()) {
             $iWebsiteId = $this->getCurrentStore()->getWebsiteId();
@@ -23,28 +24,31 @@ class Aligent_WebsiteSwitcher_Block_Switcher extends Mage_Core_Block_Template
                 }
             }
         }
+
         return $aStores;
     }
 
     /**
      * @return Mage_Core_Model_Store
      */
-    public function getCurrentStore() {
+    public function getCurrentStore()
+    {
         return Mage::app()->getStore();
     }
 
     /**
      * @return int
      */
-    public function getCurrentStoreId() {
+    public function getCurrentStoreId()
+    {
         return $this->getCurrentStore()->getId();
     }
 
     /**
      * @return null|string
      */
-    public function getCurrentStoreName() {
+    public function getCurrentStoreName()
+    {
         return $this->getCurrentStore()->getName();
     }
-    
 }

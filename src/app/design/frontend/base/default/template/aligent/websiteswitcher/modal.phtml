@@ -16,7 +16,9 @@
     <h1><?php echo $this->__('Welcome'); ?></h1>
     <?php echo $this->__("You are visiting <strong>%s</strong>", $this->getCurrentStoreName()); ?>
 
-    <p class="continue"><a href="<?php echo $this->getCurrentStore()->getCurrentUrl()?>"><?php echo $this->__('Continue'); ?></a> </p>
+    <p class="continue">
+        <a href="<?php echo $this->getCurrentStore()->getCurrentUrl()?>"><?php echo $this->__('Continue'); ?></a>
+    </p>
 
     <p><?php echo $this->__("If this is incorrect, please select your location:"); ?></p>
 
