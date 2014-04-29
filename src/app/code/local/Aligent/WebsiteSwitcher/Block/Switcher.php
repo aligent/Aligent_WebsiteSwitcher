@@ -23,6 +23,11 @@ class Aligent_WebsiteSwitcher_Block_Switcher extends Mage_Core_Block_Template
                 }
             }
         }
+        foreach ($aStores as $iIdx => $oStore) {
+            if (!$oStore->getIsActive()) {
+                unset($aStores[$iIdx]);
+            }
+        }
         return $aStores;
     }
 
