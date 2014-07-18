@@ -14,6 +14,16 @@ class Aligent_WebsiteSwitcher_Block_Switcher extends Mage_Core_Block_Template
      * @return array
      */
     public function getStores() {
+
+        $aStagingSiteIds = array();
+
+        if(class_exists('Enterprise_Staging_Model_Staging')) {
+            $stagingSites = Mage::getModel('enterprise_staging/staging')->getCollection()->addFieldToSelect('staging_website_id');
+            foreach ($stagingSites as $oStagingSite) {
+                $aStagingSiteIds[$oStagingSite->getStagingWebsiteId()] = $oStagingSite->getStagingWebsiteId();
+            }
+        }
+
         $aStores = Mage::app()->getStores();
         if (Mage::helper('aligent_websiteswitcher')->getLimitToCurrentWebsite()) {
             $iWebsiteId = $this->getCurrentStore()->getWebsiteId();
@@ -24,7 +34,8 @@ class Aligent_WebsiteSwitcher_Block_Switcher extends Mage_Core_Block_Template
             }
         }
         foreach ($aStores as $iIdx => $oStore) {
-            if (!$oStore->getIsActive()) {
+            // Exclude stores that aren't active or that belong to a staging site
+            if (!$oStore->getIsActive() || array_key_exists($oStore->getWebsiteId(), $aStagingSiteIds)) {
                 unset($aStores[$iIdx]);
             }
         }
