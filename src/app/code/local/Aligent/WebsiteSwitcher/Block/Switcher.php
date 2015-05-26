@@ -17,7 +17,7 @@ class Aligent_WebsiteSwitcher_Block_Switcher extends Mage_Core_Block_Template
 
         $aStagingSiteIds = array();
 
-        if(class_exists('Enterprise_Staging_Model_Staging')) {
+        if(Mage::getConfig()->getModuleConfig('enterprise_staging')->is('active', 'true')) {
             $stagingSites = Mage::getModel('enterprise_staging/staging')->getCollection()->addFieldToSelect('staging_website_id');
             foreach ($stagingSites as $oStagingSite) {
                 $aStagingSiteIds[$oStagingSite->getStagingWebsiteId()] = $oStagingSite->getStagingWebsiteId();
