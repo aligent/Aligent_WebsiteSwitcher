@@ -25,6 +25,11 @@
         </layout>
     </frontend>
     <global>
+        <helpers>
+            <aligent_websiteswitcher>
+                <class>Aligent_WebsiteSwitcher_Helper</class>
+            </aligent_websiteswitcher>
+        </helpers>
         <models>
             <aligent_websiteswitcher>
                 <class>Aligent_WebsiteSwitcher_Model</class>
@@ -43,8 +48,55 @@
                         <class>aligent_websiteswitcher/observer</class>
                         <method>setStoreCookie</method>
                     </aligent_websiteswitcher_setstorecookie>
+                    <aligent_websiteswitcher_checkGetStore>
+                        <type>singleton</type>
+                        <class>aligent_websiteswitcher/observer</class>
+                        <method>checkGetStore</method>
+                    </aligent_websiteswitcher_checkGetStore>
                 </observers>
             </controller_front_init_before>
+            <controller_action_layout_load_before>
+                <observers>
+                    <aligent_websiteswitcher_setlayouthandles>
+                        <type>singleton</type>
+                        <class>aligent_websiteswitcher/observer</class>
+                        <method>setLayoutHandles</method>
+                    </aligent_websiteswitcher_setlayouthandles>
+                </observers>
+            </controller_action_layout_load_before>
         </events>
     </global>
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <aligent_website_switcher>
+                                            <title>Aligent</title>
+                                        </aligent_website_switcher>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+
+    <default>
+        <aligent_website_switcher>
+            <website_switcher>
+                <display_in_menu>0</display_in_menu>
+                <display_modal>1</display_modal>
+                <limit_to_website>0</limit_to_website>
+                <use_geoip>0</use_geoip>
+            </website_switcher>
+        </aligent_website_switcher>
+    </default>
+
 </config>

@@ -6,7 +6,214 @@
  *
  * @author 		Luke Mills <luke@aligent.com.au>
  */
-.header .form-website { clear:both; padding:5px 0 0; text-align:right; }
+.header .form-website { clear:both; padding:5px 0 0; text-align:right;  }
 .header .form-website label { font-weight:bold; padding-right:5px; color:#a7c6dd; vertical-align:middle; }
 .header .form-website select { padding:0; }
 .header .form-website select.flags option { background-position:4px 50%; background-repeat:no-repeat; padding-left:25px; }
+#aligent-switcher{
+    width:400px;
+    padding: 10px;;
+}
+
+.aligent_content  p {
+    margin-bottom: 20px;
+}
+
+.overlay_aligent {
+    background-color: #000;
+    filter:alpha(opacity=60);
+    -moz-opacity: 0.6;
+    opacity: 0.6;
+}
+
+.overlay___invisible__ {
+    background-color: #666666;
+    filter:alpha(opacity=0);
+    -moz-opacity: 0;
+    opacity: 0;
+}
+
+.top.table_window {
+    background: #fff;
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-topright: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.mid.table_window {
+    background: #fff;
+}
+
+.bot.table_window {
+    background: #fff;
+    -webkit-border-bottom-right-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+/* North-West corner */
+.aligent_nw {
+    width:40px;
+    height:40px;
+}
+
+/* North border */
+.aligent_n {
+    height:40px;
+}
+
+/* North-East corner */
+.aligent_ne {
+    width:40px;
+    height:40px;
+}
+
+/* West border */
+.aligent_w {
+    width:40px;
+}
+
+/* East border */
+.aligent_e {
+    width:40px;
+}
+
+/* South-West corner */
+.aligent_sw {
+    width:40px;
+    height:40px;
+}
+
+/* South border */
+.aligent_s {
+    height:40px;
+}
+
+/* South-East corner */
+.aligent_se {
+    width:40px;
+    height:40px;
+}
+
+.aligent_sizer {
+    width: 9px;
+    height: 19px;
+    cursor:se-resize;
+}
+
+.aligent_close {
+    position:absolute;
+    cursor:pointer;
+    z-index:2000;
+    background: transparent;
+    border-radius: 4px 0 4px 0;
+    border: none;
+    display: block;
+    height: 20px;
+    right: 10px;
+    top: 10px;
+    width: 20px;
+    *background: transparent url('../images/btn-modal-close.png') no-repeat; /* IE7 does not support :after */
+}
+
+.aligent_close:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    right: 5px;
+    background: transparent url('../images/btn-modal-close.png') no-repeat;
+}
+
+
+
+.aligent_minimize {
+    width: 14px;
+    height: 15px;
+    position:absolute;
+    top:5px;
+    left:28px;
+    cursor:pointer;
+    z-index:2000;
+}
+
+.aligent_maximize {
+    width: 14px;
+    height: 15px;
+    position:absolute;
+    top:5px;
+    left:49px;
+    cursor:pointer;
+    z-index:2000;
+}
+
+.aligent_title {
+    float:left;
+    height:14px;
+    text-align:center;
+    width:100%;
+    color:#000;
+}
+
+.aligent_content {
+    color: #000;
+    background-color: #fff;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: visible !important;
+}
+
+.top_draggable, .bottom_draggable {
+    cursor:move;
+}
+
+.status_bar {
+    font-size:12px;
+}
+.status_bar input{
+    font-size:12px;
+}
+
+.wired_frame {
+    display: block;
+    position: absolute;
+    border: 1px #000 dashed;
+}
+
+.dialog{
+    height:auto !important;
+}
+
+.dialog iframe {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* DO NOT CHANGE THESE VALUES*/
+.dialog {
+    display: block;
+    position: absolute;
+}
+
+.dialog table.table_window  {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    margin: 0px;
+    padding:0px;
+}
+
+.dialog .title_window {
+    -moz-user-select:none;
+}                                                    
+

@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Aligent
+ * @package     Aligent_WebsiteSwitcher
+ * @copyright   Copyright (c) 2013 Aligent Consulting. (http://www.aligent.com.au)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ *
+ * @author 		Luke Mills <luke@aligent.com.au>
+ */
+-->
+<config>
+    <tabs>
+        <aligent translate="label" module="aligent_websiteswitcher">
+            <label>Aligent</label>
+            <sort_order>9999</sort_order>
+        </aligent>
+    </tabs>
+    <sections>
+        <aligent_website_switcher translate="label" module="aligent_websiteswitcher">
+            <label>Website Switcher</label>
+            <tab>aligent</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <website_switcher translate="label" module="aligent_websiteswitcher">
+                    <label>Website Switcher</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <display_in_menu translate="label">
+                            <label>Display in menu</label>
+                            <sort_order>10</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </display_in_menu>
+                        <display_modal translate="label comment">
+                            <label>Display modal</label>
+                            <comment>Display modal when user first visits site</comment>
+                            <sort_order>20</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </display_modal>
+                        <limit_to_website translate="label comment">
+                            <label>Limit stores to current web site</label>
+                            <comment>Only show stores from the current website in dropdown</comment>
+                            <sort_order>30</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </limit_to_website>
+                        <use_geoip>
+                            <label>Use GeoIP to set initial Store View</label>
+                            <comment>Determine which store view to assign the user to based on GeoIP</comment>
+                            <sort_order>40</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </use_geoip>
+                        <geoip_based_on>
+                            <label>Store view based on</label>
+                            <comment>Note: Shipping address requires Aligent_Availableaddresses extension.</comment>
+                            <sort_order>50</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>aligent_websiteswitcher/source_addressparam</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <use_geoip>1</use_geoip>
+                            </depends>
+                        </geoip_based_on>
+                        <geolocate_to_store translate="label">
+                            <label>Geolocate Users From</label>
+                            <comment>Users from these countries will be assigned to this store by default.</comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <depends>
+                                <geoip_based_on>aligent_website_switcher/website_switcher/geolocate_to_store</geoip_based_on>
+                            </depends>
+                        </geolocate_to_store>
+                    </fields>
+                </website_switcher>
+            </groups>
+        </aligent_website_switcher>
+    </sections>
+</config>
